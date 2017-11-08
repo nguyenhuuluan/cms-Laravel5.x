@@ -233,14 +233,28 @@ use App\User;
 
 
 // //One to Many relationship
-Route::get('/posts', function(){
+// Route::get('/posts', function(){
 
-	$user = User::find(1);
+// 	$user = User::find(1);
 
-	foreach($user->posts as $post)
-	{
-		echo $post->title;
-		echo '<br/>';
+// 	foreach($user->posts as $post)
+// 	{
+// 		echo $post->title;
+// 		echo '<br/>';
 
-	}
+// 	}
+// });
+
+
+// //Many to Many relationship
+
+Route::get('/user/{id}/role', function($id){
+
+	$user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+
+	// foreach($user->roles as $role){
+	// 	return $role->name;
+	// }
+
+	return $user;
 });
