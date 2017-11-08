@@ -230,3 +230,17 @@ use App\User;
 // 	return Post::find($id)->user->name;
 
 // });
+
+
+// //One to Many relationship
+Route::get('/posts', function(){
+
+	$user = User::find(1);
+
+	foreach($user->posts as $post)
+	{
+		echo $post->title;
+		echo '<br/>';
+
+	}
+});
