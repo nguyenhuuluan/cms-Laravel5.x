@@ -2,6 +2,7 @@
 
 use App\Post;
 use App\User;
+use App\Country;
 
 
 
@@ -269,6 +270,17 @@ Route::get('user/pivot', function(){
 	foreach ($user->roles as $role) {
 		# code...
 		echo $role->pivot->created_at;
+	}
+
+});
+
+Route::get('/user/country', function(){
+
+	$country = Country::find(2);
+
+	foreach ($country->posts as $post) {
+		# code...
+		return $post->title;
 	}
 
 });
