@@ -248,13 +248,27 @@ use App\User;
 
 // //Many to Many relationship
 
-Route::get('/user/{id}/role', function($id){
+// Route::get('/user/{id}/role', function($id){
 
-	$user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+// 	$user = User::find($id)->roles()->orderBy('id', 'desc')->get();
 
-	// foreach($user->roles as $role){
-	// 	return $role->name;
-	// }
+// 	// foreach($user->roles as $role){
+// 	// 	return $role->name;
+// 	// }
 
-	return $user;
+// 	return $user;
+// });
+
+
+// Accessing the intermediate  table /pivot
+
+Route::get('user/pivot', function(){
+
+	$user = User::find(1);
+
+	foreach ($user->roles as $role) {
+		# code...
+		echo $role->pivot->created_at;
+	}
+
 });
