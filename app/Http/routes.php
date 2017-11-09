@@ -263,24 +263,55 @@ use App\Country;
 
 // Accessing the intermediate  table /pivot
 
-Route::get('user/pivot', function(){
+// Route::get('user/pivot', function(){
+
+// 	$user = User::find(1);
+
+// 	foreach ($user->roles as $role) {
+// 		# code...
+// 		echo $role->pivot->created_at;
+// 	}
+
+// });
+
+// Route::get('/user/country', function(){
+
+// 	$country = Country::find(2);
+ 
+// 	foreach ($country->posts as $post) {
+// 		# code...
+// 		return $post->title;
+// 	}
+
+// });
+
+
+
+// Polymorphic Releations
+
+
+Route::get('user/photos', function(){
 
 	$user = User::find(1);
 
-	foreach ($user->roles as $role) {
+
+	foreach ($user->photos as $photo) {
 		# code...
-		echo $role->pivot->created_at;
+		return $photo;
 	}
 
 });
 
-Route::get('/user/country', function(){
+Route::get('post/{id}/photos', function($id){
 
-	$country = Country::find(2);
+	$post = Post::find($id);
 
-	foreach ($country->posts as $post) {
+
+	foreach ($post->photos as $photo) {
 		# code...
-		return $post->title;
+		echo $photo->path;
 	}
 
 });
+
+
