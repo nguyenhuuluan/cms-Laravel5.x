@@ -3,7 +3,7 @@
 use App\Post;
 use App\User;
 use App\Country;
-
+use App\Photo;
 
 
 
@@ -290,28 +290,37 @@ use App\Country;
 // Polymorphic Releations
 
 
-Route::get('user/photos', function(){
+// Route::get('user/photos', function(){
 
-	$user = User::find(1);
-
-
-	foreach ($user->photos as $photo) {
-		# code...
-		return $photo;
-	}
-
-});
-
-Route::get('post/{id}/photos', function($id){
-
-	$post = Post::find($id);
+// 	$user = User::find(1);
 
 
-	foreach ($post->photos as $photo) {
-		# code...
-		echo $photo->path;
-	}
+// 	foreach ($user->photos as $photo) {
+// 		# code...
+// 		return $photo;
+// 	}
 
+// });
+
+// Route::get('post/{id}/photos', function($id){
+
+// 	$post = Post::find($id);
+
+
+// 	foreach ($post->photos as $photo) {
+// 		# code...
+// 		echo $photo->path;
+// 	}
+
+// });
+
+
+
+Route::get('photo/{id}/post', function($id){
+
+	$photo = Photo::findOrFail($id);
+
+	return $photo->imageable;
 });
 
 
