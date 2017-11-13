@@ -327,21 +327,31 @@ use App\Tag;
 
 //Polymorphic Many to Many
 
-Route::get('/post/tag', function(){
+// Route::get('/post/tag', function(){
 
-	$post = POST::find(1);
-	foreach ($post->tags as $tag) {
-		echo $tag->name;
-	}
-});
+// 	$post = POST::find(1);
+// 	foreach ($post->tags as $tag) {
+// 		echo $tag->name;
+// 	}
+// });
 
-Route::get('/tag/post', function(){
+// Route::get('/tag/post', function(){
 
 
 
-	$tag = Tag::find(2);
-	foreach ($tag->posts as $post) {
-		echo $post->title;
-	}
+// 	$tag = Tag::find(2);
+// 	foreach ($tag->posts as $post) {
+// 		echo $post->title;
+// 	}
 
-});
+// });
+
+
+/*
+|--------------------------------------------------------------------------
+| CRUD Application
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::resource('/posts', 'PostsController');
