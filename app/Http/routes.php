@@ -380,5 +380,13 @@ Route::get('/dates', function(){
 	echo '<br>';
 });
 
+Route::get('/getname', function(){
+
+	$user = User::find(1);
+
+	echo $user->name;
+});
+
+
 });
 Route::resource('/posts', 'PostsController');
