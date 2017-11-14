@@ -387,6 +387,16 @@ Route::get('/getname', function(){
 	echo $user->name;
 });
 
+Route::get('/setname', function(){
+
+	$user = User::find(1);
+
+	$user->name = "william";
+	$user->save();
+});
+
 
 });
+
+
 Route::resource('/posts', 'PostsController');

@@ -52,5 +52,11 @@ class User extends Authenticatable
 
     }
 
+    public function setNameAttribute($value){
+
+
+        $this->attributes['name'] = strtoupper($value);
+    }
+
 
 }
