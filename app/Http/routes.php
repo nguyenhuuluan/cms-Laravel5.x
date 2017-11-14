@@ -355,3 +355,6 @@ use App\Tag;
 */
 
 Route::resource('/posts', 'PostsController');
+
+Route::resource('/post2s', 'Post2sController');
+Route::resource('/post3s', 'Post3sController');
