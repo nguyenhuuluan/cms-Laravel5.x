@@ -5,7 +5,7 @@ use App\User;
 use App\Country;
 use App\Photo;
 use App\Tag;
-
+use Carbon\Carbon;
 
 
 /*
@@ -354,11 +354,31 @@ use App\Tag;
 |
 */
 
-// Route::group(['middleware'=>'web'], function(){
+Route::group(['middleware'=>'web'], function(){
 
 
 	
+Route::get('/dates', function(){
+
+	$date = new DateTime('+1 week');
+	echo $date->format('m-d-Y');
+	echo '<br>';
+	echo Carbon::now();
+	echo '<br>';
+
+	echo Carbon::now()->addDays(10)->diffForHumans();
 
 
-// });
+
+	echo '<br>';
+
+	echo Carbon::now()->subMonths(5)->diffForHumans();
+	echo '<br>';
+	echo Carbon::now()->yesterday();
+
+	echo '<br>';
+	echo '<br>';
+});
+
+});
 Route::resource('/posts', 'PostsController');
