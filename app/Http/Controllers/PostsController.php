@@ -38,7 +38,7 @@ class PostsController extends Controller
     {
         //
         return view('posts.create');
-    }
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -48,21 +48,45 @@ class PostsController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
-        //
+       
 
-        // return $request->get('title');
+        $input = $request->all();
+
+        if($file = $request->file('file')){
+
+            $name = $file->getClientOriginalName();
+            $file->move('imgaes', $name);
+
+            $input['path'] = $name; 
+        }
+
+         Post::create($input);
+        // $file = $request->file('file');
+
+        // echo '<br>';
+
+        // echo $file->getClientOriginalName();
+        // echo '<br>';
+
+        // echo $file->getClientSize();
 
 
-        Post::create($request->all());
 
-        // $input = $request->all();
-        // $input['title'] = $request->title;
+       // //
+
+        // // return $request->get('title');
+
 
         // Post::create($request->all());
 
-        // $post = new Post;
-        // $post->title = $request->title;
-        // $post->save();
+        // // $input = $request->all();
+        // // $input['title'] = $request->title;
+
+        // // Post::create($request->all());
+
+        // // $post = new Post;
+        // // $post->title = $request->title;
+        // // $post->save();
 
         return redirect('/posts');
     }
